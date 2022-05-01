@@ -4,5 +4,5 @@
         <input type="text" name="categories" placeholder="Category's name">
     </div>
     <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
-    <button type="submit">Add category</button>
+    <button type="submit">Add categories</button>
 </form>
