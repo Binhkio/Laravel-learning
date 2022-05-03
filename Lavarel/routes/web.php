@@ -16,6 +16,10 @@ use App\Http\Controllers\CategoriesController;
 
 //  Client routes
 
+Route::get('/', function () {
+
+});
+
 Route::prefix('categories')->group(function(){
 
     //  List categories
@@ -35,4 +39,8 @@ Route::prefix('categories')->group(function(){
 
     //  Delete categories
     Route::delete('/delete/{id}', [CategoriesController::class, 'deleteCategories'])->name('categories.delete');
+});
+
+Route::prefix('admin')->group(function(){
+    
 });
