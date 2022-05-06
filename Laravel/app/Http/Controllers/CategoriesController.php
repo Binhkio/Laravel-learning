@@ -13,7 +13,7 @@ class CategoriesController extends Controller
 
     //  Show categories (GET)
     public function index(){
-        
+        return 'a';
     }
     
     //  Get categories (GET)
@@ -23,12 +23,12 @@ class CategoriesController extends Controller
 
     //  Show form add categories (GET)
     public function addCategories(){
-        return view('clients/categories/add');
+
     }
     
     //  Add categories (POST)
     public function handleAddCategories(){
-        return redirect(route('categories.add'));
+
     }
 
     //  Update categories (POST)

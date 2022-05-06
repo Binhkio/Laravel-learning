@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,7 @@ use App\Http\Controllers\CategoriesController;
 //  Client routes
 
 Route::get('/', function () {
-
+    return 'HOME';
 });
 
 Route::prefix('categories')->group(function(){
@@ -42,5 +43,5 @@ Route::prefix('categories')->group(function(){
 });
 
 Route::prefix('admin')->group(function(){
-    
+    Route::get('/', [DashboardController::class, 'index']);
 });

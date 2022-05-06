@@ -1,0 +1,51 @@
+use CSDLproject
+
+CREATE TABLE Users (
+    id int NOT NULL UNIQUE,
+    nicknames VARCHAR(255) NOT NULL,
+    usernames VARCHAR(255) NOT NULL,
+    passwords VARCHAR(255) NOT NULL,
+    isAdmin BIT,
+    CONSTRAINT id_PK PRIMARY KEY (id)
+);
+
+CREATE TABLE Posts (
+    id int NOT NULL UNIQUE,
+    user_id int NOT NULL,
+    title VARCHAR(500) NOT NULL,
+    post_text VARCHAR(2000) NOT NULL,
+    img VARCHAR(200),
+    isCheck BIT,
+    creat_at TIME NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT userIdFK FOREIGN KEY (user_id) REFERENCES Users(id)
+);
+
+CREATE TABLE Comments (
+    id int NOT NULL UNIQUE,
+    post_id int NOT NULL UNIQUE,
+    user_id int NOT NULL UNIQUE,
+    comment_text VARCHAR(2000),
+    creat_at TIME,
+    PRIMARY KEY (id),
+    CONSTRAINT commentPostIdFK FOREIGN KEY (post_id) REFERENCES Posts(id),
+    CONSTRAINT commentUserIdFK FOREIGN KEY (user_id) REFERENCES Users(id)
+)
+
+CREATE TABLE Like_Post (
+    id int NOT NULL UNIQUE,
+    post_id int NOT NULL UNIQUE,
+    user_id int NOT NULL UNIQUE,
+    PRIMARY KEY (id),
+    CONSTRAINT likePostIdFK FOREIGN KEY (post_id) REFERENCES Posts(id),
+    CONSTRAINT likeUserIdFK FOREIGN KEY (user_id) REFERENCES Users(id)
+)
+
+CREATE TABLE Like_Comment (
+    id int NOT NULL UNIQUE,
+    comment_id int NOT NULL UNIQUE,
+    user_id int NOT NULL UNIQUE,
+    PRIMARY KEY (id),
+    CONSTRAINT likeCommentIdFK FOREIGN KEY (comment_id) REFERENCES Comments(id),
+    CONSTRAINT likeCommentUserIdFK FOREIGN KEY (user_id) REFERENCES Users(id)
+)
