@@ -44,6 +44,6 @@ Route::prefix('categories')->group(function(){
     Route::delete('/delete/{id}', [CategoriesController::class, 'deleteCategories'])->name('categories.delete');
 });
 
-Route::prefix('admin')->group(function(){
+Route::middleware('auth.admin')->prefix('admin')->group(function(){
     Route::get('/', [DashboardController::class, 'index']);
 });

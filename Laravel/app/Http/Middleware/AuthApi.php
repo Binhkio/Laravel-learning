@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class CheckLoginAdmin
+class AuthApi
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class CheckLoginAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        echo 'Middleware request. Add to Kernel to set as default middleware </br>';
+        echo 'request api';
         return $next($request);
     }
 }
