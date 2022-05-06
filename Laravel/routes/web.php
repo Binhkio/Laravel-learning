@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,9 @@ use App\Http\Controllers\Admin\DashboardController;
 //  Client routes
 
 Route::get('/', function () {
-    return 'HOME';
+    return view('clients/login');
 });
+Route::post('/', [LoginController::class, 'login']);
 
 Route::prefix('categories')->group(function(){
 
