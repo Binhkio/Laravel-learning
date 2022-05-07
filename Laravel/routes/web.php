@@ -5,6 +5,8 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\LoginController;
 
+use Illuminate\Http\Response;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,4 +48,31 @@ Route::prefix('categories')->group(function(){
 
 Route::middleware('auth.admin')->prefix('admin')->group(function(){
     Route::get('/', [DashboardController::class, 'index']);
+});
+
+Route::get('response', function(){
+
+    $content = '<h2>Laravel</h2>';
+    $json_content = [
+        'search content-type at',
+        'https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/web-all-content-types.txt'
+    ];
+
+    // $response = (new Response($json_content))->header('Content-Type', 'application/json');    //use Response()
+    // $response = response('Laravel', 201);   // use helper response()
+    
+    // Cookie
+    // $response = (new Response())->cookie('cookie', 'cookie-value', 1);  // cookie('name', 'value', minutes)
+    
+    // Get cookie by: Request $request => $request->cookie('name');
+
+    // JSON
+
+    $contentArr = [
+        'name' => 'Quan',
+        'age' => '19'
+    ];
+    $response = response()->json($contentArr, 201)->header('Api-Key', '12345');
+
+    return $response;
 });
