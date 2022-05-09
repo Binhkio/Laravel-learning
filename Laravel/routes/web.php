@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Database\UserController;
 use App\Http\Controllers\LoginController;
 
 use Illuminate\Http\Response;
@@ -76,3 +77,5 @@ Route::get('response', function(){
 
     return $response;
 });
+
+Route::get('user', [UserController::class,'index']);
