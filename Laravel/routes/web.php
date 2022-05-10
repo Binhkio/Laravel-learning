@@ -7,6 +7,7 @@ use App\Http\Controllers\Database\UserController;
 use App\Http\Controllers\LoginController;
 
 use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +20,16 @@ use Illuminate\Http\Response;
 |
 */
 
-//  Client routes
+//  Client routes   
 
-Route::get('/', function () {
-    return view('clients/login');
-});
-Route::post('/', [LoginController::class, 'login']);
+Route::middleware('auth.login')->get('home',function(Request $request){
+    // dd($request->cookie('XSRF-TOKEN'));     //  get cookie value
+
+    return view('clients.home-page');
+})->name('home');
+
+Route::get('login', [LoginController::class, 'getLogin']);
+Route::post('login', [LoginController::class, 'postLogin']);
 
 Route::prefix('categories')->group(function(){
 
@@ -78,4 +83,4 @@ Route::get('response', function(){
     return $response;
 });
 
-Route::get('user', [HomeController::class,'getUsers']);
+Route::get('users', [HomeController::class,'getUsers']);

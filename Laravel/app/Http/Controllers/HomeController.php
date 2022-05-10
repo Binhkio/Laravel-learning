@@ -14,6 +14,9 @@ class HomeController extends Controller
     public function getUsers(){
         $users = new Users();
         $userList = $users->getAllUsers();
-        return $userList;
+        // return $userList->items();
+        // dd($userList);
+        return view('clients.users', ['users'=>$userList]);
     }
 }
+

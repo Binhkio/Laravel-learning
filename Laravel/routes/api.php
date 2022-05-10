@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProductsController;
+use App\Http\Controllers\Api\UserApi;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('products', [ProductsController::class, 'getAllProducts']);
+//  Example
+Route::get('get-all-products', [ProductsController::class, 'getAllProducts']);
+
+
+Route::prefix('users')->group(function(){
+
+    //  Get all users
+    Route::get('all', [UserApi::class, 'getAllUsers']);
+});

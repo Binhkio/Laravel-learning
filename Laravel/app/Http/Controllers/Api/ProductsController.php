@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 class ProductsController extends Controller
 {
     public function getAllProducts(){
-        return 'All products';
+        return response()->json([
+            'status' => 200,
+            'message' => 'All products.'
+        ]);
     }
 }
