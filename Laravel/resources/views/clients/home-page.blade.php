@@ -4,7 +4,7 @@
     </head>
     <body>
         @section('sidebar')
-            This is the master sidebar.
+            <h1>Login successful!</h1>
         @show
  
         <div class="container">
