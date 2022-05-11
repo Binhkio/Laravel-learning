@@ -29,5 +29,16 @@ class Users extends Model
             return false;
     }
 
+    public function getAllPosts(){
+        // $posts = DB::table('Posts')->where('isCheck', 1);
+        $posts = DB::select('SELECT * FROM [Posts] WHERE [isCheck]=1');
+        return $posts;
+    }
+
+    public function getUser_Post(){
+        
+    }
+
+
 
 }

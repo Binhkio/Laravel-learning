@@ -18,8 +18,7 @@ class LoginController extends Controller
     }
 
     public function postLogin(Request $request){    // Receive $request as an array include data
-        dd($request);
-        
+        // Check request value
         $request->validate([
             'username' => 'required|max:255',
             'password' => 'required|max:255'
@@ -30,11 +29,11 @@ class LoginController extends Controller
             'password.max' => 'Please type less than 255 characters'
         ]);
         
-        $userExist = DB::table('Users')->where('username', $request['username'])->value('password');
-        // dd($userExist);
+        //  Get password of 'username'
+        $userPassword = DB::table('Users')->where('username', $request['username'])->value('password');
         
-        if($userExist === $request['password']){
-            $mins = 1;
+        if($userPassword === $request['password']){
+            $mins = 60*24;  //------------------------------------------SET TIME TOKEN
             $newToken = Str::random(200);
             $hashToken = hash('sha256', $newToken);
             // session(['login_token' => $hashToken]);
@@ -43,13 +42,16 @@ class LoginController extends Controller
             
             $adminUsername = 'admin';
             if($request['username'] === $adminUsername){
-                Session::flash('admin', true);
+                Session::put('admin', true);
                 return redirect()->route('admin.home');
             }
 
-            return redirect('home');
+            return redirect()->route('user.home-page');
         }
-        else
-            return view('clients/login', ['msg' => 'Account not found']);
+        else {
+            $back_msg = 'Account not found!';
+            $request->flashOnly('username');
+            return redirect()->route('log-in', ['backmsg'=>'Account not found!']);
+        }
     }
 }

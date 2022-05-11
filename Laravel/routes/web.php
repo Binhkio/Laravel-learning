@@ -1,13 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Response;
+use Illuminate\Http\Request;
+
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Database\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PostsController;
 
-use Illuminate\Http\Response;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,11 +31,21 @@ Route::middleware(['auth.admin'])->prefix('admin')->name('admin.')->group(functi
     })->name('home');
 });
 
-Route::middleware('auth.login')->get('home',function(Request $request){
-    
-    return view('clients.home-page');
-})->name('home-page');
+Route::middleware('auth.login')->name('user.')->group(function(){
+    //  Homepage
+    Route::get('/',function(){
+        return view('clients.home-page');
+    })->name('home-page');
 
+    //  View posts
+    Route::prefix('posts')->name('display-posts')->group(function(){
+        //  Display all posts
+        Route::get('/all', [PostsController::class, 'displayAllPosts']);
+    });
+});
+
+
+//---------------------------------------------------------------------------------------------------
 Route::get('log-in', [LoginController::class, 'getLogin'])->name('log-in');
 Route::post('log-in', [LoginController::class, 'postLogin']);
 
