@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class CheckLoginAdmin
 {
@@ -16,7 +18,9 @@ class CheckLoginAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        echo 'Middleware request. Add to Kernel to set as default middleware </br>';
-        return $next($request);
+        if(Session::get('admin'))
+            return $next($request);
+        else
+            return redirect()->route('log-in');
     }
 }

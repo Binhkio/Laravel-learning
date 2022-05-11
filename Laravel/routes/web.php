@@ -22,14 +22,27 @@ use Illuminate\Http\Request;
 
 //  Client routes   
 
+Route::middleware(['auth.admin'])->prefix('admin')->name('admin.')->group(function(){
+    //  Home
+    Route::get('/', function(){
+        return view('clients/admin/home-page');
+    })->name('home');
+});
+
 Route::middleware('auth.login')->get('home',function(Request $request){
-    // dd($request->cookie('XSRF-TOKEN'));     //  get cookie value
-
+    
     return view('clients.home-page');
-})->name('home');
+})->name('home-page');
 
-Route::get('login', [LoginController::class, 'getLogin']);
-Route::post('login', [LoginController::class, 'postLogin']);
+Route::get('log-in', [LoginController::class, 'getLogin'])->name('log-in');
+Route::post('log-in', [LoginController::class, 'postLogin']);
+
+Route::get('log-out', function(Request $request){
+    // return redirect('log-in')->withInput([
+    //     $request->except('password'),
+    // ]);
+    return redirect()->route('log-in');
+})->name('log-out');
 
 Route::prefix('categories')->group(function(){
 
@@ -50,10 +63,6 @@ Route::prefix('categories')->group(function(){
 
     //  Delete categories
     Route::delete('/delete/{id}', [CategoriesController::class, 'deleteCategories'])->name('categories.delete');
-});
-
-Route::middleware('auth.admin')->prefix('admin')->group(function(){
-    Route::get('/', [DashboardController::class, 'index']);
 });
 
 Route::get('response', function(){

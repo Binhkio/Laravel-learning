@@ -16,11 +16,7 @@ class Users extends Model
 
     public function getAllUsers(){
         $users = DB::table('Users')->get();
-        return $users;
-    }
-
-    public function accessToken($name, $newToken){
-        $user = DB::table('Users')->where('username', $name);
+        return ($users===null)?$users:'';
     }
 
     public function userExist($name, $pass){

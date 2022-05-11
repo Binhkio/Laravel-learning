@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 
-use App\Models\Users;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session;
+
 class LoginController extends Controller
 {
     
@@ -17,24 +18,35 @@ class LoginController extends Controller
     }
 
     public function postLogin(Request $request){    // Receive $request as an array include data
-        // $request->validate([
-        //     'username' => 'required',
-        //     'password' => 'required'
-        // ],[
-        //     'username.required' => 'Please type username',
-        //     'password.required' => 'Please type password'
-        // ]);
-        $user = new Users();
-
-        $userExist = $user->userExist($request['username'], $request['password']);
+        dd($request);
         
-        if($userExist){
+        $request->validate([
+            'username' => 'required|max:255',
+            'password' => 'required|max:255'
+        ],[
+            'username.required' => 'Please type username',
+            'password.required' => 'Please type password',
+            'username.max' => 'Please type less than 255 characters',
+            'password.max' => 'Please type less than 255 characters'
+        ]);
+        
+        $userExist = DB::table('Users')->where('username', $request['username'])->value('password');
+        // dd($userExist);
+        
+        if($userExist === $request['password']){
             $mins = 1;
             $newToken = Str::random(200);
             $hashToken = hash('sha256', $newToken);
-            // $request->session()->put('login_token', $hashToken);
+            // session(['login_token' => $hashToken]);
             Cookie::queue('login_token', $hashToken, $mins);
             DB::update('UPDATE [Users] SET [_token] = ? WHERE [username] = ?', [$hashToken, $request['username']]);
+            
+            $adminUsername = 'admin';
+            if($request['username'] === $adminUsername){
+                Session::flash('admin', true);
+                return redirect()->route('admin.home');
+            }
+
             return redirect('home');
         }
         else
