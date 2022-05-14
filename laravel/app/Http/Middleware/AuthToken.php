@@ -5,9 +5,9 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Arr;
 
-class CheckLoginAdmin
+class AuthToken
 {
     /**
      * Handle an incoming request.
@@ -18,9 +18,14 @@ class CheckLoginAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Session::get('admin'))
+        $cur_token = $request->cookie('_token');
+        $tokenExist = DB::select('SELECT * FROM [Users] WHERE [_token] = ?', [$cur_token]);
+        if(!empty($tokenExist)){
             return $next($request);
-        else
-            return redirect()->route('log-in');
+        }
+        return response()->json([
+            'content' => 'You don\'t have permission'
+        ], 401);
     }
 }
+    

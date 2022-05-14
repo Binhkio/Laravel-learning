@@ -4,16 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-class Users extends Model
+
+class Restaurants extends Model
 {
     use HasFactory;
-
-    protected $table = 'Users';
+    protected $table = 'Restaurants';
     protected $fillable = [
-        'nickname',
-        'username',
-        'password',
-        '_token'
+        'user_id',
+        'res_name',
+        'res_description',
+        'image'
     ];
-    protected $hidden = 'password';
 }

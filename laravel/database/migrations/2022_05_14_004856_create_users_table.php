@@ -23,7 +23,8 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('nickname');
             $table->string('username')->unique();
-            $table->string('password');
+            $table->text('password');
+            $table->text('_token');
             $table->boolean('isAdmin');
             $table->timestamps();
         });

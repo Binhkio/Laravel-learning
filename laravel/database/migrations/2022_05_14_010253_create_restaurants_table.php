@@ -13,12 +13,12 @@ class CreateRestaurantsTable extends Migration
      */
     public function up()
     {
-        Schema::create('restaurants', function (Blueprint $table) {
+        Schema::create('Restaurants', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->text('res_name');
             $table->text('res_description');
-            $table->text('image');
+            $table->text('res_image');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('Users');
         });

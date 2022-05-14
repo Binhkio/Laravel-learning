@@ -14,3 +14,7 @@
 USE RestaurantDB
 
 SELECT * FROM INFORMATION_SCHEMA.TABLES
+
+SELECT * FROM [Users]
+
+SELECT * FROM [Restaurants]
