@@ -28,7 +28,6 @@ Route::post('logout', [LoginApiController::class, 'logout']);
 Route::post('register', [LoginApiController::class, 'register']);
 //-----------------------------------------------------------------------------
 
-
 //----------------- RESTAURANT CONTROLLER API----------------------------------
 Route::middleware('auth.token')->prefix('restaurant')->group(function(){
     //-----------------------------------------------------------------
@@ -36,7 +35,7 @@ Route::middleware('auth.token')->prefix('restaurant')->group(function(){
     Route::get('/index', [RestaurantController::class, 'index']);
     //-----------------------------------------------------------------
     Route::get('/edit/{id}', [RestaurantController::class, 'edit']);
-    Route::get('/update/{id}', [RestaurantController::class, 'update']);
+    Route::post('/update/{id}', [RestaurantController::class, 'update']);
     Route::delete('/delete/{id}', [RestaurantController::class, 'delete']);
 });
 //-----------------------------------------------------------------------------

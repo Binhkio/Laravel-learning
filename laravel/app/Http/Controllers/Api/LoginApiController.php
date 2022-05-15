@@ -14,6 +14,7 @@ use App\Models\Users;
 
 class LoginApiController extends Controller
 {
+    //  LOGIN
     public function login(Request $request){    // Receive $request as an array include data
         
         // Check request value
@@ -57,8 +58,6 @@ class LoginApiController extends Controller
     }
 
     public function logout(Request $request){
-        //  Delete token on web
-
         //  Delete token on database
         $user = DB::table('Users')->where('username', $request['username']);
         if($user->value('_token') !== null){

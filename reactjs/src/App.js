@@ -1,48 +1,27 @@
+import logo from './logo.svg';
 import './App.css';
-
-import { useState } from 'react';
-
+import {Routes, Route, Navigate} from 'react-router-dom';
+import Login from './components/Login'
+import Register from './components/Register'
+import Auth from './components/Auth'
+import AuthContextProvider from './contexts/AuthContext'
 
 
 function App() {
-  // const [textInput, setText] = useState("")
-  const [textQueue, updateQueue] = useState([])
-  const [isEdit, editIndex] = useState(-1)
-
-  function handleAdd(){
-    updateQueue([...textQueue, document.getElementById('inputText').value])
-  }
-  
-  function handleDelete(index){
-    console.log(index)
-    updateQueue(textQueue.filter((value, idx) => index !== idx))
-    // updateQueue(textQueue.splice(index,1))
-  }
-
   return (
-    <>
-      <input id='inputText' type="text" name="inputName" placeholder="Type here"/>
-      <button onClick={ () => handleAdd() } >Add</button>
       <div>
-        <ul>
-          {textQueue.map((value, index)=>(
-            <>
-            <div key={index} id={index}>
-              <li>{value}</li>
-              <button onClick={ () => editIndex(index) } >Edit</button>
-              {
-                index === isEdit && {
-                  
-                }
-              }
-              <button onClick={ () => handleDelete(index) } >Delete</button>
-            </div>
-            </>
-          ))}
-        </ul>
-      </div>
-    </>
-  );
+      <h1>tran ngoc</h1>
+      
+      {/* // <Routes>
+      //   <Route path ='/' element ={<Auth/>} >
+      //     <Route path='/' element={<Navigate to="/login" />} />
+      //     <Route path='/login' element={<Login />}/>
+      //     <Route path='/register' element={<Register />}/>
+      //   </Route>
+      // </Routes> */}
+      
+    </div>
+  )
 }
 
 export default App;

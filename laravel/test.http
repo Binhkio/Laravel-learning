@@ -4,8 +4,8 @@ POST  http://127.0.0.1:8000/api/login
 Content-Type: application/json
 
 {
-    "username" : "binhkio",
-    "password" : "quandz123"
+    "username" : "tuan",
+    "password" : "tuan123"
 }
 
 
@@ -60,11 +60,11 @@ Content-Type: application/json
 
 ###
 //  Update restaurant
-GET  http://127.0.0.1:8000/api/restaurant/update/1
+POST  http://127.0.0.1:8000/api/restaurant/update/1
 Content-Type: application/json
 
 {
-    "name" : "Binhkio's Restaurant",
+    "name" : "TuanLe's Restaurant",
     "description" : "Top 1 server Earth",
     "image" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKNSURBVDjLpZLLa1NBFMa/m/uITfpIKzFJYxGaxkQDFnFRsrLgxm5i3dWl+Ae46Kr+DWbZTcBNhboQ1KW1uYhQhVKECFE0SEvSBrXR2Nyb+37EmYHG0hZceOEww5n5fvOdcw/X6/XwP59wWlKW5SABF0jc8X0/S9Y0CbL1q2T9StZHJOT5+XmPO+6AiC+T3JNoNHolHo8jHA4jFAqB3ut0OlBVFY1GA61Wa4PkFk4A1tfXX2cymdmJiQlwHHeqbdd1Ua1WUavVVgLHDwkwF4vF/ll7MpkEKWPuRA+cnhjY3NyEpmnI5/MIBoMQRZGVoOs62u02ms0mUqkUBfxt4upGe8B2vFXXGBnje/uQJAnlchm5XI6JqW1FUWBZFgRBYLk+YOXNL8FxnA9BkUsLkTg+7vzAZESB53msiVRAATQOe0bF9Jz1wDDtccNy0yEJ4Dkf/Fga7+pBJFJXsba2huXlZZAHGICuVHjogAG6up20bJuCsNvSIPI+pMg4Ss+3mOXp6WkUi0XY5M4hiAL6DlTDiOpErJHo6iZ2vik4IwKJCym8/aJje3sbiUSCCY4C6J4BOqpx0XYs6KYDRbegaiZqe20cqBYGzl/Dy/c+Crdu91+lAGqfOuJb5wqSqltyNCLxChFKPAeBJzMe4OD5Hho7Lczlp3BpMsJ+4+joKLLZLJvGer2uCweq0R0OBUSPUDXDwm6TjOtvDUbXhNm1MJUI497CDCSRZ2XQUaZTWKlUvhMnBeGgq8uBnnjz008Ve3ttx9HMB7EhvzOTQeHsMHd9ZNAeksuvmG06RKZpUuFjUsrDpaWlfW72/osB13CeuYZ1wzXswa2nd+2jk1kqlYaIYIqET5r2eXFx0Tp6/ge8rrdXLiWBdQAAAABJRU5ErkJggg=="
 
