@@ -24,9 +24,9 @@ POST  http://127.0.0.1:8000/api/register
 Content-Type: application/json
 
 {
-    "username" : "binhkio",
-    "nickname" : "Binhkio",
-    "password" : "quandz123"
+    "username" : "quan",
+    "nickname" : "quan123",
+    "password" : "123"
 }
 
 ###
