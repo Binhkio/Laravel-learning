@@ -27,26 +27,23 @@ class LoginApiController extends Controller
                 'validate_err' => $validator->errors()->first()
             ], 401);
         }
-        
-        //  Default response
-        function defaultResponse($message, $status){
-            return response()->json([
-                'content' => $message
-            ], $status);
-        }
 
         $user = DB::table('Users')->where('username', $request['username']);
 
         //  Check user exist
         $userExist = $user->exists();
         if(!$userExist){
-            return defaultResponse('Account not found!', 401);
+            return response()->json([
+                'content' => 'Account not found!'
+            ], 401);
         }
 
         //  Check password
         $hashedPassword = $user->value('password');
         if(!(Hash::check($request['password'], $hashedPassword))){
-            return defaultResponse('Wrong password!', 401);
+            return response()->json([
+                'content' => 'Wrong password!'
+            ], 401);
         }
 
         //  Login successful----------------------------------------
@@ -57,7 +54,7 @@ class LoginApiController extends Controller
         // return defaultResponse('Login successfully', 200)->cookie('_token', $token, 60);
         return response()->json([
             'content' => 'Login successfully',
-            'token' => cookie('_token', $token, 60)->__toString()
+            'token' => $token
         ], 200);
     }
 
@@ -70,7 +67,7 @@ class LoginApiController extends Controller
 
         return response()->json([
             'content' => 'Logout successfully',
-        ], 200)->withCookie('_token', null, 0);
+        ], 200);
     }
 
     public function register(Request $request){

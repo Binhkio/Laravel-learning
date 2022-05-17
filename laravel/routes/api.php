@@ -29,9 +29,11 @@ Route::post('register', [LoginApiController::class, 'register']);
 //-----------------------------------------------------------------------------
 
 //----------------- RESTAURANT CONTROLLER API----------------------------------
-Route::middleware('auth.token')->prefix('restaurant')->group(function(){
+// middleware('auth.token')->
+Route::prefix('restaurant')->group(function(){
     //-----------------------------------------------------------------
     Route::post('/store', [RestaurantController::class, 'store']);
+    // Route::post('/store-img', [RestaurantController::class, 'storeImg']);
     Route::get('/index', [RestaurantController::class, 'index']);
     //-----------------------------------------------------------------
     Route::get('/edit/{id}', [RestaurantController::class, 'edit']);

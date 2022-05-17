@@ -13,6 +13,6 @@ class Restaurants extends Model
         'user_id',
         'res_name',
         'res_description',
-        'image'
+        'res_image'
     ];
 }
