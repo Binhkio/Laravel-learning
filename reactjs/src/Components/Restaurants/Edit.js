@@ -9,7 +9,6 @@ export default function Edit(dataEdit) {
         res_name : dataEdit.res.res_name,
         res_description : dataEdit.res.res_description,
         res_image : dataEdit.res.res_image,
-        nickname : dataEdit.name
     });
     const [image, setImage]= useState('');
 

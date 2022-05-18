@@ -9,20 +9,20 @@ const NavBar = () => {
 
     return (
         <>
-            <nav className="grid grid-cols-4 text-cyan-500 border-2 border-cyan-600 rounded-3xl backdrop-blur-md shadow-lg shadow-cyan-500/90 ">
+            <nav className="grid grid-cols-4 text-fuchsia-300 font-bold border-2 border-[#ff0080] rounded-3xl backdrop-blur-md shadow-lg shadow-[#ff0080]">
                 <Link to="/home">
-                    <div className="p-8 text-2xl text-bold hover:text-slate-100 text-center hover:bg-gradient-to-t hover:from-cyan-500/20 hover:to-cyan-400 bg-gradient-to-t from-transparent to-cyan-400/90">Home</div>
+                    <div className="p-8 text-2xl text-bold rounded-3xl hover:text-slate-100 text-center hover:bg-gradient-to-b hover:from-[#7928ca] hover:to-[#ff0080]">Home</div>
                 </Link>
 
                 <Link to="/restaurant">
-                    <div className="p-8 text-2xl text-bold hover:text-slate-100 text-center hover:bg-gradient-to-t hover:from-cyan-500/20 hover:to-cyan-400 bg-gradient-to-t from-transparent to-cyan-400/90">My Restaurants</div>
+                    <div className="p-8 text-2xl text-bold rounded-3xl hover:text-slate-100 text-center hover:bg-gradient-to-b hover:from-[#7928ca] hover:to-[#ff0080]">My Restaurants</div>
                 </Link>
 
                 <Link to="/create">
-                    <div className="p-8 text-2xl text-bold hover:text-slate-100 text-center hover:bg-gradient-to-t hover:from-cyan-500/20 hover:to-cyan-400 bg-gradient-to-t from-transparent to-cyan-400/90">Create new</div>
+                    <div className="p-8 text-2xl text-bold rounded-3xl hover:text-slate-100 text-center hover:bg-gradient-to-b hover:from-[#7928ca] hover:to-[#ff0080]">Create new</div>
                 </Link>
 
-                <button className="p-8 text-2xl text-bold hover:text-slate-100 text-center hover:bg-gradient-to-t hover:from-cyan-500/20 hover:to-cyan-400 bg-gradient-to-t from-transparent to-cyan-400/90" onClick={handleLogout}>Logout</button>
+                <button className="p-8 text-2xl text-bold rounded-3xl hover:text-slate-100 text-center hover:bg-gradient-to-b hover:from-[#7928ca] hover:to-[#ff0080]" onClick={handleLogout}>Logout</button>
             </nav>
         </>
         // <nav class="flex-none bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">

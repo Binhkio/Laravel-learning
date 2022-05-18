@@ -539,6 +539,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   z-index: 10;
 }
 
+.z-0 {
+  z-index: 0;
+}
+
 .row-span-5 {
   grid-row: span 5 / span 5;
 }
@@ -578,10 +582,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 1rem;
 }
 
-.mb-12 {
-  margin-bottom: 3rem;
-}
-
 .mr-3 {
   margin-right: 0.75rem;
 }
@@ -608,14 +608,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .block {
   display: block;
-}
-
-.inline-block {
-  display: inline-block;
-}
-
-.inline {
-  display: inline;
 }
 
 .flex {
@@ -650,20 +642,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 400px;
 }
 
-.h-auto {
-  height: auto;
-}
-
-.h-fit {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-
-.max-h-full {
-  max-height: 100%;
-}
-
 .max-h-fit {
   max-height: -webkit-fit-content;
   max-height: -moz-fit-content;
@@ -690,44 +668,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: auto;
 }
 
-.w-1\/4 {
-  width: 25%;
-}
-
-.w-1\/2 {
-  width: 50%;
-}
-
-.w-5\/6 {
-  width: 83.333333%;
-}
-
-.w-fit {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.w-max {
-  width: -webkit-max-content;
-  width: max-content;
-}
-
-.min-w-full {
-  min-width: 100%;
-}
-
 .max-w-3xl {
   max-width: 48rem;
-}
-
-.max-w-max {
-  max-width: -webkit-max-content;
-  max-width: max-content;
-}
-
-.max-w-full {
-  max-width: 100%;
 }
 
 .flex-none {
@@ -762,20 +704,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   flex-wrap: wrap;
 }
 
-.content-center {
-  align-content: center;
-}
-
 .items-start {
   align-items: flex-start;
 }
 
 .items-center {
   align-items: center;
-}
-
-.items-stretch {
-  align-items: stretch;
 }
 
 .justify-end {
@@ -788,10 +722,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .justify-between {
   justify-content: space-between;
-}
-
-.justify-around {
-  justify-content: space-around;
 }
 
 .gap-6 {
@@ -812,14 +742,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .self-center {
   align-self: center;
-}
-
-.justify-self-start {
-  justify-self: start;
-}
-
-.justify-self-center {
-  justify-self: center;
 }
 
 .overflow-y-auto {
@@ -852,6 +774,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .rounded-full {
   border-radius: 9999px;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
 }
 
 .rounded-t {
@@ -917,16 +843,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(243 244 246 / var(--tw-border-opacity));
 }
 
-.border-slate-200 {
-  --tw-border-opacity: 1;
-  border-color: rgb(226 232 240 / var(--tw-border-opacity));
-}
-
-.border-cyan-400 {
-  --tw-border-opacity: 1;
-  border-color: rgb(34 211 238 / var(--tw-border-opacity));
-}
-
 .border-red-400 {
   --tw-border-opacity: 1;
   border-color: rgb(248 113 113 / var(--tw-border-opacity));
@@ -937,6 +853,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(74 222 128 / var(--tw-border-opacity));
 }
 
+.border-cyan-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(34 211 238 / var(--tw-border-opacity));
+}
+
 .border-orange-400 {
   --tw-border-opacity: 1;
   border-color: rgb(251 146 60 / var(--tw-border-opacity));
@@ -945,6 +866,21 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-yellow-400 {
   --tw-border-opacity: 1;
   border-color: rgb(250 204 21 / var(--tw-border-opacity));
+}
+
+.border-slate-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(226 232 240 / var(--tw-border-opacity));
+}
+
+.border-\[\#ff0080\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 0 128 / var(--tw-border-opacity));
+}
+
+.border-l-green-500 {
+  --tw-border-opacity: 1;
+  border-left-color: rgb(34 197 94 / var(--tw-border-opacity));
 }
 
 .bg-white {
@@ -1008,88 +944,37 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(6 182 212 / 0));
 }
 
-.to-blue-400\/50 {
-  --tw-gradient-to: rgb(96 165 250 / 0.5);
-}
-
-.to-blue-500 {
-  --tw-gradient-to: #3b82f6;
-}
-
-.to-purple-500 {
-  --tw-gradient-to: #a855f7;
-}
-
-.to-blue-400\/80 {
-  --tw-gradient-to: rgb(96 165 250 / 0.8);
-}
-
-.to-cyan-400\/80 {
-  --tw-gradient-to: rgb(34 211 238 / 0.8);
-}
-
-.to-cyan-400\/50 {
-  --tw-gradient-to: rgb(34 211 238 / 0.5);
+.from-\[\#7928ca\] {
+  --tw-gradient-from: #7928ca;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(121 40 202 / 0));
 }
 
 .to-cyan-400\/90 {
   --tw-gradient-to: rgb(34 211 238 / 0.9);
 }
 
+.to-blue-500 {
+  --tw-gradient-to: #3b82f6;
+}
+
+.to-\[\#ff0080\] {
+  --tw-gradient-to: #ff0080;
+}
+
 .bg-cover {
   background-size: cover;
-}
-
-.bg-contain {
-  background-size: contain;
-}
-
-.bg-fixed {
-  background-attachment: fixed;
-}
-
-.bg-local {
-  background-attachment: local;
 }
 
 .bg-scroll {
   background-attachment: scroll;
 }
 
-.bg-clip-border {
-  background-clip: border-box;
-}
-
-.bg-clip-padding {
-  background-clip: padding-box;
-}
-
-.bg-clip-content {
-  background-clip: content-box;
-}
-
 .bg-center {
   background-position: center;
 }
 
-.bg-origin-border {
-  background-origin: border-box;
-}
-
-.bg-origin-content {
-  background-origin: content-box;
-}
-
 .object-cover {
   object-fit: cover;
-}
-
-.object-none {
-  object-fit: none;
-}
-
-.object-center {
-  object-position: center;
 }
 
 .p-2 {
@@ -1114,6 +999,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .p-6 {
   padding: 1.5rem;
+}
+
+.p-\[5px\] {
+  padding: 5px;
 }
 
 .px-3 {
@@ -1156,11 +1045,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-bottom: 0.75rem;
 }
 
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
@@ -1189,10 +1073,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .text-right {
   text-align: right;
-}
-
-.align-top {
-  vertical-align: top;
 }
 
 .text-2xl {
@@ -1298,46 +1178,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(236 72 153 / var(--tw-text-opacity));
 }
 
-.text-slate-100 {
-  --tw-text-opacity: 1;
-  color: rgb(241 245 249 / var(--tw-text-opacity));
-}
-
-.text-cyan-100 {
-  --tw-text-opacity: 1;
-  color: rgb(207 250 254 / var(--tw-text-opacity));
-}
-
-.text-cyan-400 {
-  --tw-text-opacity: 1;
-  color: rgb(34 211 238 / var(--tw-text-opacity));
-}
-
-.text-cyan-200 {
-  --tw-text-opacity: 1;
-  color: rgb(165 243 252 / var(--tw-text-opacity));
-}
-
-.text-purple-200 {
-  --tw-text-opacity: 1;
-  color: rgb(233 213 255 / var(--tw-text-opacity));
-}
-
-.text-purple-400 {
-  --tw-text-opacity: 1;
-  color: rgb(192 132 252 / var(--tw-text-opacity));
-}
-
-.text-purple-300 {
-  --tw-text-opacity: 1;
-  color: rgb(216 180 254 / var(--tw-text-opacity));
-}
-
-.text-fuchsia-500 {
-  --tw-text-opacity: 1;
-  color: rgb(217 70 239 / var(--tw-text-opacity));
-}
-
 .text-fuchsia-300 {
   --tw-text-opacity: 1;
   color: rgb(240 171 252 / var(--tw-text-opacity));
@@ -1370,6 +1210,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .shadow-cyan-500\/90 {
   --tw-shadow-color: rgb(6 182 212 / 0.9);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.shadow-\[\#ff0080\] {
+  --tw-shadow-color: #ff0080;
   --tw-shadow: var(--tw-shadow-colored);
 }
 
@@ -1447,24 +1292,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-image: linear-gradient(to top, var(--tw-gradient-stops));
 }
 
-.hover\:from-transparent:hover {
-  --tw-gradient-from: transparent;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(0 0 0 / 0));
-}
-
-.hover\:from-cyan-600:hover {
-  --tw-gradient-from: #0891b2;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(8 145 178 / 0));
-}
-
-.hover\:from-cyan-600\/40:hover {
-  --tw-gradient-from: rgb(8 145 178 / 0.4);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(8 145 178 / 0));
-}
-
-.hover\:from-cyan-600\/20:hover {
-  --tw-gradient-from: rgb(8 145 178 / 0.2);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(8 145 178 / 0));
+.hover\:bg-gradient-to-b:hover {
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
 
 .hover\:from-cyan-500\/20:hover {
@@ -1472,32 +1301,56 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(6 182 212 / 0));
 }
 
-.hover\:to-purple-500:hover {
-  --tw-gradient-to: #a855f7;
+.hover\:from-fuchsia-500\/20:hover {
+  --tw-gradient-from: rgb(217 70 239 / 0.2);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(217 70 239 / 0));
 }
 
-.hover\:to-purple-500\/50:hover {
-  --tw-gradient-to: rgb(168 85 247 / 0.5);
+.hover\:from-fuchsia-200\/20:hover {
+  --tw-gradient-from: rgb(245 208 254 / 0.2);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(245 208 254 / 0));
 }
 
-.hover\:to-purple-500\/80:hover {
-  --tw-gradient-to: rgb(168 85 247 / 0.8);
+.hover\:from-fuchsia-100:hover {
+  --tw-gradient-from: #fae8ff;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(250 232 255 / 0));
 }
 
-.hover\:to-cyan-500:hover {
-  --tw-gradient-to: #06b6d4;
+.hover\:from-fuchsia-100\/50:hover {
+  --tw-gradient-from: rgb(250 232 255 / 0.5);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(250 232 255 / 0));
 }
 
-.hover\:to-cyan-600:hover {
-  --tw-gradient-to: #0891b2;
+.hover\:from-fuchsia-500\/50:hover {
+  --tw-gradient-from: rgb(217 70 239 / 0.5);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(217 70 239 / 0));
 }
 
-.hover\:to-cyan-500\/80:hover {
-  --tw-gradient-to: rgb(6 182 212 / 0.8);
+.hover\:from-fuchsia-400\/50:hover {
+  --tw-gradient-from: rgb(232 121 249 / 0.5);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(232 121 249 / 0));
+}
+
+.hover\:from-fuchsia-400\/80:hover {
+  --tw-gradient-from: rgb(232 121 249 / 0.8);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(232 121 249 / 0));
+}
+
+.hover\:from-\[\#7928ca\]:hover {
+  --tw-gradient-from: #7928ca;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(121 40 202 / 0));
 }
 
 .hover\:to-cyan-400:hover {
   --tw-gradient-to: #22d3ee;
+}
+
+.hover\:to-fuchsia-400:hover {
+  --tw-gradient-to: #e879f9;
+}
+
+.hover\:to-\[\#ff0080\]:hover {
+  --tw-gradient-to: #ff0080;
 }
 
 .hover\:text-green-100:hover {
@@ -1513,6 +1366,16 @@ Ensure the default browser behavior of the `hidden` attribute.
 .hover\:text-slate-100:hover {
   --tw-text-opacity: 1;
   color: rgb(241 245 249 / var(--tw-text-opacity));
+}
+
+.hover\:text-fuchsia-100:hover {
+  --tw-text-opacity: 1;
+  color: rgb(250 232 255 / var(--tw-text-opacity));
+}
+
+.hover\:text-fuchsia-300:hover {
+  --tw-text-opacity: 1;
+  color: rgb(240 171 252 / var(--tw-text-opacity));
 }
 
 .hover\:shadow-lg:hover {
