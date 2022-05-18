@@ -10,7 +10,6 @@ use App\Models\Users;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
-use function PHPSTORM_META\map;
 
 class RestaurantController extends Controller
 {
@@ -138,6 +137,7 @@ class RestaurantController extends Controller
             $fileName = time().'.'.$extension;
             $file->move('/home/binhkio/Documents/Backend/Laravel-learning/reactjs/src/uploads/images/', $fileName);
         }
+
         $res->update([
             'res_name' => $request['name'],
             'res_description' => $request['description'],

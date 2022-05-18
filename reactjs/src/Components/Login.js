@@ -33,7 +33,7 @@ function Login (){
     }
 
     return (
-        <div className="h-full flex justify-center items-center">
+        <div className="max-h-screen min-h-screen flex justify-center items-center">
         <div className="text-cyan-500 border-2 border-cyan-600 rounded-3xl backdrop-blur-md shadow-lg shadow-cyan-500">
             <form className="m-16 flex flex-col gap-6 ">
                 <div className="text-2xl font-bold grid grid-cols-2 gap-8">
