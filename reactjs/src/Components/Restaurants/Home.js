@@ -1,39 +1,54 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import {restaurantApiUrl} from "../../Context/constants";
+import {imagesUrl, restaurantApiUrl} from "../../Context/constants";
+import Modal from './Modal';
+import Edit from "./Edit";
 import NavBar from "../NavBar";
 
 const Home = () => {
     const [allRestaurants, setAllRestaurants] = useState([]);
 
-    useEffect(async () => {
-        try {
-            const response = await axios.get(`${restaurantApiUrl}/index`);
-            console.log(response.data);
-            if (response.status === 200) {
-                console.log(response.data);
-                setAllRestaurants(response.data.restaurants);
-            } else alert(response.data);
-        } catch (e) {
-            alert(e);
+    const [nickname, setNickname] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    var indexModal = -1;
+
+    useEffect(() => {
+        async function getAllIndex(){
+            try {
+                const response = await axios.get(`${restaurantApiUrl}/index`);
+                if (response.status === 200) {
+                    // console.log(response.data.nickname);
+                    setAllRestaurants(response.data.restaurants);
+                    setNickname(response.data.nickname);
+                } else alert(response.data);
+            } catch (e) {
+                alert(e);
+            }
         }
+        getAllIndex();
     }, []);
 
+
     return (
-        <>
-        <NavBar />
-        <div className="grid grid-cols-2 gap-8 ">
-        {allRestaurants && allRestaurants.map((res, idx) => (
-            <div key={idx} className="bg-gradient-to-r from-cyan-500 to-blue-500 rounded-3xl ">
-                <div>ID: {idx+1}</div>
-                <div>Name: {res.res_name}</div>
-                <div>Description: {res.res_description}</div>
-                <img className="text-center" src={res.res_image} alt="Unknown" />
-                {/* <div>Last change: {res.updated_at}</div> */}
+        <>  
+            <NavBar />
+            <div id="res" className="grid grid-cols-2 gap-8 ">
                 
+            {allRestaurants && allRestaurants.map((res, idx) => {
+                return (
+                    <div key={idx} className="bg-gradient-to-r from-cyan-500 to-blue-500 rounded-3xl ">
+                        <div>ID: {idx+1}</div>
+                        <div>Name: {res.res_name}</div>
+                        <img src={require(`${imagesUrl}${res.res_image}`)} alt="Unknown" />
+                        <div>Created by :{nickname[idx]}</div>
+                        <div className="flex justify-center items-center m-4">
+                            <Modal res={res} name={nickname[idx]} />
+                        </div>
+                    </div>
+                )}
+                )}
             </div>
-            ))}
-        </div>
         </>
     );
 };

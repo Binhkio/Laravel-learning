@@ -19,8 +19,8 @@ const Create = () => {
         const fData = new FormData();
         fData.append('name', newRestaurants.name);
         fData.append('description', newRestaurants.description);
-        fData.append('image', image);
         fData.append('_token', localStorage.getItem("_token"));
+        fData.append('image', image);
 
         console.log(typeof fData, fData);
         try{

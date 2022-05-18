@@ -105,4 +105,18 @@ class LoginApiController extends Controller
             'content' => 'Register successfully',
         ],200);
     }
+
+    public function checkToken(Request $request){
+        if($request->input('_token')){
+            $userExist = DB::table('Users')->where('_token', $request->input('_token'))->exists();
+            if($userExist){
+                return response()->json([
+                    'content' => 'Authenticated'
+                ], 200);
+            }
+        }
+        return response()->json([
+            'content' => 'Authenticate falsed'
+        ], 401);
+    }
 }

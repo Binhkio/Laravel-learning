@@ -44,21 +44,21 @@ function Login (){
                     </Link>
                 </div>
                 <div className="mt-10">
-                    <p className="text-2xl font-medium">Nickname</p>
-                    <input className="" type="text" name="nickname" value={registerForm.username} onChange={ (e) => {setRegisterForm({...registerForm, username:e.target.value})} } placeholder="Nickname..." />
+                    <p className="text-2xl font-medium p-2">Nickname</p>
+                    <input className="rounded-lg pl-4 py-1 border-2 border-cyan-500/100" type="text" name="nickname" value={registerForm.username} onChange={ (e) => {setRegisterForm({...registerForm, username:e.target.value})} } placeholder="Nickname..." />
                 </div>
                 <br/>
                 <div>
-                    <p className="text-2xl font-medium">Username</p>
-                    <input className="" type="text" name="username" value={registerForm.username} onChange={ (e) => {setRegisterForm({...registerForm, username:e.target.value})} } placeholder="Username..." />
+                    <p className="text-2xl font-medium p-2">Username</p>
+                    <input className="rounded-lg pl-4 py-1 border-2 border-cyan-500/100" type="text" name="username" value={registerForm.username} onChange={ (e) => {setRegisterForm({...registerForm, username:e.target.value})} } placeholder="Username..." />
                 </div>
                 <br/>
                 <div>
-                    <p className="text-2xl font-medium">Password</p>
-                    <input type="password" name="password" value={registerForm.password} onChange={ (e) => {setRegisterForm({...registerForm, password:e.target.value})}} placeholder="Password..." />
+                    <p className="text-2xl font-medium p-2">Password</p>
+                    <input className="rounded-lg pl-4 py-1 border-2 border-cyan-500/100" type="password" name="password" value={registerForm.password} onChange={ (e) => {setRegisterForm({...registerForm, password:e.target.value})}} placeholder="Password..." />
                 </div>
                 <div>
-                    <p style={{color:'red', fontWeight:'bold'}}>{err}</p>
+                    <p className="mt-8 text-red-800">{err}</p>
                 </div>
                 <button className="w-32 p-4 m-4 bg-cyan-300 hover:bg-indigo-300 ease-in-out duration-300 rounded-full hover:scale-110" type="submit" onClick={ registerSubmit } >Register</button>
             </form>

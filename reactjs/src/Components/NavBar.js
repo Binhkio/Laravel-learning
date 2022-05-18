@@ -9,7 +9,7 @@ const NavBar = () => {
     }
 
     return (
-        <div className="flex justify-around p-8 text-2xl font-medium">
+        <div className="p-8 text-2xl inline float-left font-medium text-slate-300">
             <Link to="/home">
                 <div>Home</div>
             </Link>

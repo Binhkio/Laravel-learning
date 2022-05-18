@@ -26,6 +26,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('login', [LoginApiController::class, 'login']);
 Route::post('logout', [LoginApiController::class, 'logout']);
 Route::post('register', [LoginApiController::class, 'register']);
+Route::post('check-token', [LoginApiController::class, 'checkToken']);
 //-----------------------------------------------------------------------------
 
 //----------------- RESTAURANT CONTROLLER API----------------------------------
@@ -33,11 +34,11 @@ Route::post('register', [LoginApiController::class, 'register']);
 Route::prefix('restaurant')->group(function(){
     //-----------------------------------------------------------------
     Route::post('/store', [RestaurantController::class, 'store']);
-    // Route::post('/store-img', [RestaurantController::class, 'storeImg']);
     Route::get('/index', [RestaurantController::class, 'index']);
+    Route::get('/my-index/{token}', [RestaurantController::class, 'myIndex']);
     //-----------------------------------------------------------------
     Route::get('/edit/{id}', [RestaurantController::class, 'edit']);
-    Route::post('/update/{id}', [RestaurantController::class, 'update']);
-    Route::delete('/delete/{id}', [RestaurantController::class, 'delete']);
+    Route::post('/update/{id}/{token}', [RestaurantController::class, 'update']);
+    Route::delete('/delete/{id}/{token}', [RestaurantController::class, 'delete']);
 });
 //-----------------------------------------------------------------------------

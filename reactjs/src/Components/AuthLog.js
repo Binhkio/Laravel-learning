@@ -1,11 +1,11 @@
 import { Outlet, Navigate } from "react-router-dom";
 
-const Auth = () => {
+const AuthLog = () => {
     const token = localStorage.getItem("_token");
-    if (token === null) {
-        return <Navigate to="/login" />
+    if (token !== null) {
+        return <Navigate to="/home" />
     }
     return <Outlet />;
 };
 
-export default Auth;
+export default AuthLog;

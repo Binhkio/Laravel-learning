@@ -10,10 +10,27 @@ use App\Models\Users;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
+use function PHPSTORM_META\map;
+
 class RestaurantController extends Controller
 {
     public function index(){
         $restaurants = Restaurants::all();
+        $nickname = [];
+        for($i=0; $i<count($restaurants); $i++){
+            $name = DB::table('Users')->where('id', $restaurants[$i]->user_id)->value('nickname');
+            $nickname[$i] = $name;
+        }
+        return response()->json([
+            'restaurants' => $restaurants,
+            'nickname' => $nickname
+        ], 200);
+    }
+
+    public function myIndex(Request $request, $token){
+        $user_id = DB::table('Users')->where('_token', $token)->value('id');
+        $restaurants = DB::table('Restaurants')->where('user_id', $user_id)->get();
+        
         return response()->json([
             'restaurants' => $restaurants
         ], 200);
@@ -41,8 +58,8 @@ class RestaurantController extends Controller
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $fileName = time().'.'.$extension;
-            $file->move('uploads/images/', $fileName);
-            $restaurants->res_image = 'uploads/images/'.$fileName;
+            $file->move('/home/binhkio/Documents/Backend/Laravel-learning/reactjs/src/uploads/images/', $fileName);
+            $restaurants->res_image = $fileName;
         }
         $restaurants->save();
 
@@ -78,7 +95,7 @@ class RestaurantController extends Controller
         ], 200);
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id, $token){
         
         //  Check permission
         $res = DB::select('SELECT [user_id] FROM [Restaurants] WHERE [id] = ?', [$id]);
@@ -87,7 +104,7 @@ class RestaurantController extends Controller
                 'content' => 'Restaurant is not exist'
             ], 401);
         }
-        $cur_token = $request->cookie('_token');
+        $cur_token = $token;
         $id_user = DB::select('SELECT [id] FROM [Users] WHERE [_token] = ?', [$cur_token]);
         if($res[0]->user_id !== $id_user[0]->id){
             return response()->json([
@@ -96,7 +113,7 @@ class RestaurantController extends Controller
         }
         
         //  Update
-        $user_id = DB::table('Users')->where('_token', $request->cookie('_token'))->value('id');
+        $user_id = DB::table('Users')->where('_token', $cur_token)->value('id');
 
         //  Validate
         $validator = Validator::make($request->all(), [
@@ -115,15 +132,25 @@ class RestaurantController extends Controller
         $res->user_id = $user_id;
         $res->res_name = $request['name'];
         $res->res_description = $request['description'];
-        $res->res_image = $request['image'];
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = time().'.'.$extension;
+            $file->move('/home/binhkio/Documents/Backend/Laravel-learning/reactjs/src/uploads/images/', $fileName);
+            $restaurants->res_image = $fileName;
+            
+        }
         $res->save();
 
         return response()->json([
-            'content' => 'Update Restaurant Successfully!'
+            'content' => 'Update Restaurant Successfully!',
+            'id' => $id,
+            'token' => $token,
+            'res' => $res
         ], 200);
     }
 
-    public function delete(Request $request, $id){
+    public function delete(Request $request, $id, $token){
         
         //  Check permission
         $res = DB::select('SELECT [user_id] FROM [Restaurants] WHERE [id] = ?', [$id]);
@@ -132,7 +159,7 @@ class RestaurantController extends Controller
                 'content' => 'Restaurant is not exist'
             ], 401);
         }
-        $cur_token = $request->cookie('_token');
+        $cur_token = $token;
         $id_user = DB::select('SELECT [id] FROM [Users] WHERE [_token] = ?', [$cur_token]);
         if($res[0]->user_id !== $id_user[0]->id){
             return response()->json([

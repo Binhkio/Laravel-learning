@@ -16,7 +16,8 @@ function Login (){
         event.preventDefault();
 
         try{
-            const response = await axios.post(`${apiUrl}/login`,loginForm)
+            const response = await axios.post(`${apiUrl}/login`,loginForm);
+            
             console.log(response.data, response.status, response.data.token);
             // document.cookie = `_token = ${response.data.token}; Max-Age = ${24*60*60}`;
             localStorage.setItem("_token", response.data.token);
@@ -43,16 +44,16 @@ function Login (){
                     </Link>
                 </div>
                 <div className="mt-10">
-                    <p className="text-2xl font-medium">Username</p>
-                    <input className="rounded-lg" type="text" name="username" value={loginForm.username} onChange={ (e) => {setLoginForm({...loginForm, username:e.target.value})} } placeholder=" Username..." />
+                    <p className="text-2xl font-medium p-2">Username</p>
+                    <input className="rounded-lg pl-4 py-1 border-2 border-cyan-500/100" type="text" name="username" value={loginForm.username} onChange={ (e) => {setLoginForm({...loginForm, username:e.target.value})} } placeholder="Username..." />
                 </div>
                 <br/>
                 <div>
-                    <p className="text-2xl font-medium">Password</p>
-                    <input className="rounded-lg" type="password" name="password" value={loginForm.password} onChange={ (e) => {setLoginForm({...loginForm, password:e.target.value})}} placeholder=" Password..." />
+                    <p className="text-2xl font-medium p-2">Password</p>
+                    <input className="rounded-lg pl-4 py-1 border-2 border-cyan-500/100" type="password" name="password" value={loginForm.password} onChange={ (e) => {setLoginForm({...loginForm, password:e.target.value})}} placeholder="Password..." />
                 </div>
                 <div>
-                    <p style={{color:'red', fontWeight:'bold'}}>{err}</p>
+                    <p className="mt-8 text-red-800">{err}</p>
                 </div>
                 <button className="w-32 p-4 m-4 bg-cyan-300 hover:bg-indigo-300 ease-in-out duration-300 rounded-full hover:scale-110" type="submit" onClick={ loginSubmit } >Login</button>
             </form>
