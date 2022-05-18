@@ -139,7 +139,7 @@ class RestaurantController extends Controller
         }
         $res->update([
             'res_name' => $request['name'],
-            'res_descroption' => $request['description'],
+            'res_description' => $request['description'],
             'res_image' => $fileName
         ]);
 

@@ -33,6 +33,7 @@ function Login (){
     }
 
     return (
+        <div className="h-full flex justify-center items-center">
         <div className="text-cyan-500 border-2 border-cyan-600 rounded-3xl backdrop-blur-md shadow-lg shadow-cyan-500">
             <form className="m-16 flex flex-col gap-6 ">
                 <div className="text-2xl font-bold grid grid-cols-2 gap-8">
@@ -56,6 +57,7 @@ function Login (){
                 </div>
                 <button className="text-2xl tracking-wide font-bold border-2 border-green-600 rounded-3xl py-2 text-green-400 cursor-pointer hover:bg-green-500 hover:text-green-100" type="submit" onClick={ loginSubmit } >Login</button>
             </form>
+        </div>
         </div>
     );
 }
