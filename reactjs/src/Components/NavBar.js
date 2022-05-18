@@ -8,23 +8,23 @@ const NavBar = () => {
     }
 
     return (
-        <nav className="">
-            <div className="p-8 text-2xl mx-0 w-screen container flex justify-between font-medium text-slate-300 dark:bg-gray-800">
+        <>
+            <nav className="grid grid-cols-4 text-cyan-500 border-2 border-cyan-600 rounded-3xl backdrop-blur-md shadow-lg shadow-cyan-500/90 ">
                 <Link to="/home">
-                    <div>Home</div>
+                    <div className="p-8 text-2xl text-bold hover:text-slate-100 text-center hover:bg-gradient-to-t hover:from-cyan-500/20 hover:to-cyan-400 bg-gradient-to-t from-transparent to-cyan-400/90">Home</div>
                 </Link>
 
                 <Link to="/restaurant">
-                    <div>My Restaurants</div>
+                    <div className="p-8 text-2xl text-bold hover:text-slate-100 text-center hover:bg-gradient-to-t hover:from-cyan-500/20 hover:to-cyan-400 bg-gradient-to-t from-transparent to-cyan-400/90">My Restaurants</div>
                 </Link>
 
                 <Link to="/create">
-                    <div>Create new</div>
+                    <div className="p-8 text-2xl text-bold hover:text-slate-100 text-center hover:bg-gradient-to-t hover:from-cyan-500/20 hover:to-cyan-400 bg-gradient-to-t from-transparent to-cyan-400/90">Create new</div>
                 </Link>
 
-                <button onClick={handleLogout}>Logout</button>
-            </div>
-        </nav>
+                <button className="p-8 text-2xl text-bold hover:text-slate-100 text-center hover:bg-gradient-to-t hover:from-cyan-500/20 hover:to-cyan-400 bg-gradient-to-t from-transparent to-cyan-400/90" onClick={handleLogout}>Logout</button>
+            </nav>
+        </>
         // <nav class="flex-none bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
         //     <div class="container flex flex-wrap justify-between items-center mx-auto">
         //         <a href={navigate('/')} class="flex items-center">

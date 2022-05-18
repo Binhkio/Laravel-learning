@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {imagesUrl, restaurantApiUrl} from "../../Context/constants";
+import {restaurantApiUrl} from "../../Context/constants";
 import NavBar from "../NavBar";
-import Modal from './Modal';
+import Detail from './Detail';
 import Edit from "./Edit";
 
 const Home = () => {
     const [allRestaurants, setAllRestaurants] = useState([]);
+    
 
     useEffect(() => {
         async function getMyIndex(){
@@ -16,9 +17,9 @@ const Home = () => {
                 const response = await axios.get(`${restaurantApiUrl}/my-index/${localStorage.getItem("_token")}`);
                 if (response.status === 200) {
                     setAllRestaurants(response.data.restaurants);
-                } else alert(response.data);
+                }
             } catch (err) {
-                alert(err);
+                // alert(err);
             }
         }
         getMyIndex();
@@ -28,9 +29,7 @@ const Home = () => {
         <>
         <NavBar />
         <div className="grid grid-cols-2 gap-8 ">
-        {allRestaurants && allRestaurants.map((res, idx) => {
-            console.log(`1-  ../../uploads/images/${allRestaurants[0].res_image}`);
-            console.log(`2-  ${imagesUrl}${allRestaurants[0].res_image}`);        
+        {allRestaurants && allRestaurants.map((res, idx) => {        
             return (
             <div key={idx} className="bg-gradient-to-r from-cyan-500 to-blue-500 rounded-3xl ">
                 <div>ID: {idx+1}</div>
@@ -38,8 +37,8 @@ const Home = () => {
                 <div>Description: {res.res_description}</div>
                 <img className="text-center" src={require(`../../uploads/images/${res.res_image}`)} alt="Unknown" />
                 <div className="grid grid-cols-2 gap-4 items-center m-4">
-                    <Modal res={res} name='' />
-                    <Edit res={res} name='' />
+                    <Detail res={res} />
+                    <Edit res={res} />
                 </div>
             </div>
             )}

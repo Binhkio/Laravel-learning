@@ -4,6 +4,7 @@ import { restaurantApiUrl } from "../../Context/constants";
 
 export default function Edit(dataEdit) {
     const [showModal, setShowModal] = useState(false);
+    
     const [data, setData] = useState({
         res_name : dataEdit.res.res_name,
         res_description : dataEdit.res.res_description,
@@ -11,7 +12,6 @@ export default function Edit(dataEdit) {
         nickname : dataEdit.name
     });
     const [image, setImage]= useState('');
-
 
     const updateData = async (event) => {
         event.preventDefault();
@@ -35,11 +35,11 @@ export default function Edit(dataEdit) {
         try{
             const response = await axios.delete(`${restaurantApiUrl}/delete/${dataEdit.res.id}/${localStorage.getItem('_token')}`);
             if(response.status === 200){
-                setShowModal(false);
+                window.location.reload();
             }
         }
         catch(err){
-            alert(err);
+            // alert(err);
         }
     }
 

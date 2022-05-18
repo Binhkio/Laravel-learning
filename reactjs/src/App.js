@@ -14,7 +14,7 @@ import Edit from './Components/Restaurants/Edit';
 
 function App() {
     return (
-        <div className="h-screen w-screen bg-cover bg-[url('https://www.teahub.io/photos/full/13-135684_gallery-nice-wallpaper-hd-nice-wallpaper-hd-for.jpg')]">
+        <div className="h-screen w-screen bg-cover bg-scroll bg-[url('https://www.teahub.io/photos/full/13-135684_gallery-nice-wallpaper-hd-nice-wallpaper-hd-for.jpg')]">
             <Routes>
                 <Route element={<AuthLog/>}>
                     <Route path='/login' element={<Login/>} />

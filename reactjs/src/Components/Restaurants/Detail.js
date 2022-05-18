@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Modal(dataDetail) {
+export default function Detail(dataDetail) {
     const [showModal, setShowModal] = React.useState(false);
     return (
         <>

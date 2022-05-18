@@ -129,7 +129,8 @@ class RestaurantController extends Controller
 
         $restaurants = Restaurants::all();
         $res = $restaurants->find($id);
-        $res->user_id = $user_id;
+        // $res->user_id = $user_id;
+        
         $fileName = '';
         if($request->hasFile('image')){
             $file = $request->file('image');
