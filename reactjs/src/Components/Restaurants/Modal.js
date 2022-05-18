@@ -1,5 +1,4 @@
 import React from "react";
-import { imagesUrl } from "../../Context/constants";
 
 export default function Modal(dataDetail) {
     const [showModal, setShowModal] = React.useState(false);
@@ -36,7 +35,7 @@ export default function Modal(dataDetail) {
                                 </div>
                                 {/*body*/}
                                 <div className="relative p-6 flex-auto">
-                                    <img src={require(`${imagesUrl}${dataDetail.res.res_image}`)} alt="Unknown" />
+                                    <img src={require(`../../uploads/images/${dataDetail.res.res_image}`)} alt="Unknown" />
                                     <p className="my-4 text-slate-500 text-lg leading-relaxed">
                                         {dataDetail.res.res_description}
                                     </p>

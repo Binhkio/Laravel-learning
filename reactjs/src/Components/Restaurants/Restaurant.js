@@ -28,7 +28,10 @@ const Home = () => {
         <>
         <NavBar />
         <div className="grid grid-cols-2 gap-8 ">
-        {allRestaurants && allRestaurants.map((res, idx) => (
+        {allRestaurants && allRestaurants.map((res, idx) => {
+            console.log(`1-  ../../uploads/images/${allRestaurants[0].res_image}`);
+            console.log(`2-  ${imagesUrl}${allRestaurants[0].res_image}`);        
+            return (
             <div key={idx} className="bg-gradient-to-r from-cyan-500 to-blue-500 rounded-3xl ">
                 <div>ID: {idx+1}</div>
                 <div>Name: {res.res_name}</div>
@@ -39,7 +42,8 @@ const Home = () => {
                     <Edit res={res} name='' />
                 </div>
             </div>
-            ))}
+            )}
+        )}
         </div>
         </>
     );

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { imagesUrl, restaurantApiUrl } from "../../Context/constants";
+import { restaurantApiUrl } from "../../Context/constants";
 
 export default function Edit(dataEdit) {
     const [showModal, setShowModal] = useState(false);
@@ -10,6 +10,7 @@ export default function Edit(dataEdit) {
         res_image : dataEdit.res.res_image,
         nickname : dataEdit.name
     });
+    const [image, setImage]= useState('');
 
 
     const updateData = async (event) => {
@@ -17,7 +18,7 @@ export default function Edit(dataEdit) {
         const fData = new FormData();
         fData.append('name', data.res_name);
         fData.append('description', data.res_description);
-        fData.append('image', data.res_image);
+        fData.append('image', image);
         try{
             const response = await axios.post(`${restaurantApiUrl}/update/${dataEdit.res.id}/${localStorage.getItem('_token')}`, fData);
             if(response.status === 200){
@@ -62,10 +63,10 @@ export default function Edit(dataEdit) {
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                 {/*header*/}
                                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                                    <h3 className="text-3xl font-semibold">
-                                        Restaurant's name
-                                        <input className="outline-none border-b-4 border-solid border-cyan-400" type="text" name="res_name" value={data.res_name} onChange={(e)=>setData({...data, res_name:e.target.value})} />
-                                    </h3>
+                                    <div className="grid grid-cols-2 gap-2">
+                                        <h3 className="text-3xl font-semibold">Restaurant's name</h3>
+                                        <input className="outline-none text-xl border-b-4 border-solid border-cyan-400" type="text" name="res_name" value={data.res_name} onChange={(e)=>setData({...data, res_name:e.target.value})} />
+                                    </div>
                                     <button
                                         className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                                         onClick={() => setShowModal(false)}
@@ -76,12 +77,17 @@ export default function Edit(dataEdit) {
                                     </button>
                                 </div>
                                 {/*body*/}
-                                <div className="relative p-6 flex-auto">
-                                    <img className="max-h-600px max-w-400px" src={require(`${imagesUrl}${data.res.res_image}`)} alt="Unknown" />
-                                    <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                                        Description
-                                    </p>
-                                    <input className="outline-none border-b-4 border-solid border-cyan-400" type="text" name="res_name" value={data.res_description} onChange={(e)=>setData({...data, res_description:e.target.value})} />
+                                <div className="relative p-6 text-xl grid grid-rows-10 gap-8 max-h-600px max-w-400px">
+                                    <div className="row-span-5">
+                                        <img className="p-4 bg-center" src={require(`../../uploads/images/${data.res_image}`)} alt="Unknown" />
+                                        <input type="file" name="image" onChange={(e)=>setImage(e.target.files[0])}/>
+                                    </div>
+                                    <div className="row-span-5 ">
+                                        <p className="my-4 text-black text-2xl leading-relaxed">
+                                            Description
+                                        </p>
+                                        <textarea className=" outline-none w-full border-b-4 border-solid border-cyan-400" rows="5" name="res_name" value={data.res_description} onChange={(e)=>setData({...data, res_description:e.target.value})}></textarea>
+                                    </div>
                                 </div>
                                 {/*footer*/}
                                 <div className="flex items-center gap-2 justify-end p-6 border-t border-solid border-slate-200 rounded-b">

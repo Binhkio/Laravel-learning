@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import {imagesUrl, restaurantApiUrl} from "../../Context/constants";
+import {restaurantApiUrl} from "../../Context/constants";
 import Modal from './Modal';
-import Edit from "./Edit";
 import NavBar from "../NavBar";
 
 const Home = () => {
     const [allRestaurants, setAllRestaurants] = useState([]);
 
     const [nickname, setNickname] = useState([]);
-    const [showModal, setShowModal] = useState(false);
-    var indexModal = -1;
 
     useEffect(() => {
         async function getAllIndex(){
@@ -40,7 +36,7 @@ const Home = () => {
                     <div key={idx} className="bg-gradient-to-r from-cyan-500 to-blue-500 rounded-3xl ">
                         <div>ID: {idx+1}</div>
                         <div>Name: {res.res_name}</div>
-                        <img src={require(`${imagesUrl}${res.res_image}`)} alt="Unknown" />
+                        <img src={require(`../../uploads/images/${res.res_image}`)} alt="Unknown" />
                         <div>Created by :{nickname[idx]}</div>
                         <div className="flex justify-center items-center m-4">
                             <Modal res={res} name={nickname[idx]} />
