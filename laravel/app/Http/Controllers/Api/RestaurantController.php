@@ -111,14 +111,10 @@ class RestaurantController extends Controller
             ], 401);
         }
         
-        //  Update
-        $user_id = DB::table('Users')->where('_token', $cur_token)->value('id');
-
         //  Validate
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
             'description' => 'required|max:9999',
-            'image' => 'required|max:9999',
         ]);
         if($validator->fails()){
             return response()->json([
@@ -130,7 +126,7 @@ class RestaurantController extends Controller
         $res = $restaurants->find($id);
         // $res->user_id = $user_id;
         
-        $fileName = '';
+        $fileName = $res->res_image;
         if($request->hasFile('image')){
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();

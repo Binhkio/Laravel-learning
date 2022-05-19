@@ -34,7 +34,7 @@ function Login (){
 
     return (
         <div className="max-h-screen min-h-screen flex justify-center items-center">
-        <div className="text-cyan-500 border-2 border-cyan-600 rounded-3xl backdrop-blur-md shadow-lg shadow-cyan-500">
+        <div className="text-purple-500 border-2 rounded-3xl backdrop-blur-xl border-purple-500 shadow-2xl shadow-purple-500/90">
             <form className="m-16 flex flex-col gap-6 ">
                 <div className="text-2xl font-bold grid grid-cols-2 gap-8">
                     <Link to="/login">
@@ -45,16 +45,16 @@ function Login (){
                     </Link>
                 </div>
                 <div className="mt-4">
-                    <p className="text-2xl font-bold p-2 tracking-wide">Nickname</p>
-                    <input className="rounded-lg pl-4 py-1 border-2 border-cyan-500/100" type="text" name="nickname" value={registerForm.username} onChange={ (e) => {setRegisterForm({...registerForm, username:e.target.value})} } placeholder="Nickname..." />
+                    <p className="text-3xl font-bold p-2 tracking-wide">Nickname</p>
+                    <input className="p-2 outline-none border-b-2 border-cyan-500 text-2xl font-bold font-sans bg-transparent" type="text" name="nickname" value={registerForm.nickname} onChange={ (e) => {setRegisterForm({...registerForm, nickname:e.target.value})} } placeholder="" />
                 </div>
                 <div>
-                    <p className="text-2xl font-bold p-2 tracking-wide">Username</p>
-                    <input className="rounded-lg pl-4 py-1 border-2 border-cyan-500/100" type="text" name="username" value={registerForm.username} onChange={ (e) => {setRegisterForm({...registerForm, username:e.target.value})} } placeholder="Username..." />
+                    <p className="text-3xl font-bold p-2 tracking-wide">Username</p>
+                    <input className="p-2 outline-none border-b-2 border-cyan-500 text-2xl font-bold font-sans bg-transparent" type="text" name="username" value={registerForm.username} onChange={ (e) => {setRegisterForm({...registerForm, username:e.target.value})} } placeholder="" />
                 </div>
                 <div>
-                    <p className="text-2xl font-bold p-2 tracking-wide">Password</p>
-                    <input className="rounded-lg pl-4 py-1 border-2 border-cyan-500/100" type="password" name="password" value={registerForm.password} onChange={ (e) => {setRegisterForm({...registerForm, password:e.target.value})}} placeholder="Password..." />
+                    <p className="text-3xl font-bold p-2 tracking-wide">Password</p>
+                    <input className="p-2 outline-none border-b-2 border-cyan-500 text-2xl font-bold font-sans bg-transparent" type="password" name="password" value={registerForm.password} onChange={ (e) => {setRegisterForm({...registerForm, password:e.target.value})}} placeholder="" />
                 </div>
                 <div>
                     <p className="m-2 text-xl text-red-500">{err}</p>

@@ -14,7 +14,8 @@ import Edit from './Components/Restaurants/Edit';
 
 function App() {
     return (
-        <div className="min-h-screen w-screen bg-cover pr-8 pl-4 bg-fixed bg-[url('https://www.teahub.io/photos/full/13-135684_gallery-nice-wallpaper-hd-nice-wallpaper-hd-for.jpg')]">
+        <div className="min-h-screen w-screen bg-cover bg-fixed bg-[url('https://images.wallpaperscraft.com/image/single/cube_figure_dark_142157_1920x1080.jpg')]">
+        {/* <div className="min-h-screen w-screen bg-cover bg-fixed bg-[url('https://www.teahub.io/photos/full/13-135684_gallery-nice-wallpaper-hd-nice-wallpaper-hd-for.jpg')]"> */}
             <Routes>
                 <Route element={<AuthLog/>}>
                     <Route path='/login' element={<Login/>} />

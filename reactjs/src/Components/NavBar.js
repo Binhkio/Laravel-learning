@@ -1,28 +1,34 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = (data) => {
     const navigate = useNavigate();
     const handleLogout = () => {
         localStorage.removeItem('_token');
         navigate("/login");
     }
+    const selectColor = 'bg-gradient-to-b from-[#7928ca] to-[#ff0080]';
 
     return (
-        <div className="pt-2">
+        <div className="pt-2 mx-12">
             <nav className=" grid grid-cols-4 text-fuchsia-300 font-bold border-2 border-[#ff0080] rounded-3xl backdrop-blur-md shadow-lg shadow-[#ff0080]">
                 <Link to="/home">
-                    <div className="p-8 text-3xl font-semibold text-bold rounded-3xl hover:text-slate-100 text-center hover:bg-gradient-to-b hover:from-[#7928ca] hover:to-[#ff0080]">Home</div>
+                    <div className={`p-8 text-3xl font-semibold text-bold rounded-3xl hover:text-slate-100 text-center hover:bg-gradient-to-b hover:from-[#7928ca] hover:to-[#ff0080] ${data.curPage===1?selectColor:''}`}
+                        >Home</div>
                 </Link>
 
                 <Link to="/restaurant">
-                    <div className="p-8 text-3xl font-semibold text-bold rounded-3xl hover:text-slate-100 text-center hover:bg-gradient-to-b hover:from-[#7928ca] hover:to-[#ff0080]">My Restaurants</div>
+                    <div className={`p-8 text-3xl font-semibold text-bold rounded-3xl hover:text-slate-100 text-center hover:bg-gradient-to-b hover:from-[#7928ca] hover:to-[#ff0080] ${data.curPage===2?selectColor:''}`}
+                        >My Restaurants</div>
                 </Link>
 
                 <Link to="/create">
-                    <div className="p-8 text-3xl font-semibold text-bold rounded-3xl hover:text-slate-100 text-center hover:bg-gradient-to-b hover:from-[#7928ca] hover:to-[#ff0080]">Create new</div>
+                    <div className={`p-8 text-3xl font-semibold text-bold rounded-3xl hover:text-slate-100 text-center hover:bg-gradient-to-b hover:from-[#7928ca] hover:to-[#ff0080] ${data.curPage===3?selectColor:''}`}
+                        >Create new</div>
                 </Link>
 
-                <button className="p-8 text-3xl font-semibold text-bold rounded-3xl hover:text-slate-100 text-center hover:bg-gradient-to-b hover:from-[#7928ca] hover:to-[#ff0080]" onClick={handleLogout}>Logout</button>
+                <button className="p-8 text-3xl font-semibold text-bold rounded-3xl hover:text-slate-100 text-center hover:bg-gradient-to-b hover:from-[#7928ca] hover:to-[#ff0080]"
+                 onClick={handleLogout}>Logout</button>
             </nav>
         </div>
         // <nav class="flex-none bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">

@@ -11,7 +11,10 @@
 -- user = 'easty1p' && pass = 'wM31s6zK'
 
 -- CREATE DATABASE RestaurantDB
+
 USE RestaurantDB
+
+CREATE DATABASE thang
 
 SELECT * FROM INFORMATION_SCHEMA.TABLES
 

@@ -28,21 +28,25 @@ const Home = () => {
 
     return (
         <>
-        <NavBar />
-        <div className="grid grid-cols-3 gap-8 mt-12 m-4">
+        <NavBar curPage={2} />
+        <div className="grid grid-cols-3 gap-12 mt-12 mx-8 items-center">
         {allRestaurants && allRestaurants.map((res, idx) => {        
             return (
-            <div key={idx} className="text-fuchsia-300 rounded-3xl w-full p-[5px] bg-gradient-to-r from-[#7928ca] to-[#ff0080] ">
-                <div className="h-full bg-black rounded-3xl p-4">
-                    <div className="px-12 py-4 text-3xl font-bold font-sans ">{res.res_name}</div>
-                    <div className="p-6 h-[350px]">
-                        <img className="rounded-3xl min-w-[490px] h-full object-cover" src={require(`../../uploads/images/${res.res_image}`)} alt="Unknown" />
+            <div key={idx} className="py-4">
+            <div className="p-4 hover:text-fuchsia-100 hover:text-4xl text-fuchsia-200 rounded-3xl text-3xl h-fit w-full bg-gradient-to-r from-[#7928ca]/80 to-[#ff0080]/80 hover:bg-gradient-to-r hover:from-[#7928ca]/95 hover:to-[#ff0080]/95 hover:shadow-xl hover:shadow-purple-500/70 duration-150">
+                <div className="h-full rounded-3xl p-4 hover:shadow-xl ">
+                    <div className="px-12 py-4 font-bold font-sans ">{res.res_name}</div>
+                    <div className="flex justify-center pb-4">
+                    <div className="p-4 w-[490px] flex justify-center place-content-center h-[350px]">
+                        <img className="rounded-3xl shadow-xl shadow-[#7928ca]/50 w-max h-full object-cover object-center" src={require(`../../uploads/images/${res.res_image}`)} alt="Unknown" />
                     </div>
-                    <div className="grid grid-cols-4 gap-4 items-center m-4">
+                    </div>
+                    <div className="flex justify-center gap-4 items-center m-4">
                         <Detail res={res} />
                         <Edit res={res} />
                     </div>
                 </div>
+            </div>
             </div>
             )}
         )}
