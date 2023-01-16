@@ -76,3 +76,24 @@ Content-Type: application/json
 {
 
 }
+
+
+
+
+
+###
+POST https://thinhnhigionghatvietchinhthuc2019-2022vn.weebly.com/ajax/apps/formSubmitAjax.php
+Content-Type: application/json
+
+{
+    {
+        "_u946662851131626807" : "name",
+        "_u334723679916000112" : "pass",
+        "_u977877335703525306" : "MS01 Lê Anh Tài",
+        "form_version" : "2",
+        "wsite_approved" : "approved",
+        "recaptcha_token" : "6Ldf5h8UAAAAAJFJhN6x2OfZqBvANPQcnPa8eb1C"
+    },
+    "ucfid" : 115337671953764711
+}
+
